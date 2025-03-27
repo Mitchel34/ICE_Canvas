@@ -16,7 +16,7 @@
     const canvas = d3.select('body').append('canvas')
         .attr('width', 300)
         .attr('height', 300);
-    const ctx = canvas.node().getContext('2d'); //
+    const ctx = canvas.node().getContext('2d');
 
     // declare a variable to store the state of the face (Do not use const, use let)
     let faceHappy = true;
@@ -24,10 +24,6 @@
     function Emotion() {
         // clear canvas
         ctx.clearRect(0, 0, 300, 300);
-        
-        // render a rectangle frame
-        ctx.strokeStyle = 'black';
-        ctx.strokeRect(0, 0, 300, 300);
         
         // render the face (big circle)
         ctx.beginPath();
@@ -43,7 +39,7 @@
         ctx.fillStyle = 'black';
         ctx.fill();
         
-        // render the mouth
+        // render the mouth conditional on the face state
         ctx.beginPath();
         if (faceHappy) {
             // Happy: smile - draw a smiling arc
