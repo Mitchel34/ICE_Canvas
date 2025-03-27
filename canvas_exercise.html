@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+
+    const canvas = d3.select('body').append('canvas')
+        .attr('width', 300)
+        .attr('height', 300);
+    const ctx = canvas.node().getContext('2d');
+
+    // declare a variable to store the state of the face (Do not use const, use let)
+    
+
+    function Emotion() {
+        // clear canvas
+
+        // render a rectangle frame
+
+        // render the face (happy or unhappy)
+        
+    }
+
+    canvas.on('click', function (e) {
+        // use e.offsetX and e.offsetY to get the mouse position
+        // check if the click is inside the circle
+        // if so, toggle the face
+    });
+
+    Emotion();
+
+</script>
+
+</html>
