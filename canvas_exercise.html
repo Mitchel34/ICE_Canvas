@@ -16,24 +16,59 @@
     const canvas = d3.select('body').append('canvas')
         .attr('width', 300)
         .attr('height', 300);
-    const ctx = canvas.node().getContext('2d');
+    const ctx = canvas.node().getContext('2d'); //
 
     // declare a variable to store the state of the face (Do not use const, use let)
+    let faceHappy = true;
     
-
     function Emotion() {
         // clear canvas
-
-        // render a rectangle frame
-
-        // render the face (happy or unhappy)
+        ctx.clearRect(0, 0, 300, 300);
         
+        // render a rectangle frame
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(0, 0, 300, 300);
+        
+        // render the face (big circle)
+        ctx.beginPath();
+        ctx.arc(150, 150, 100, 0, Math.PI * 2);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+        ctx.stroke();
+        
+        // render the eyes
+        ctx.beginPath();
+        ctx.arc(120, 130, 10, 0, Math.PI * 2);
+        ctx.arc(180, 130, 10, 0, Math.PI * 2);
+        ctx.fillStyle = 'black';
+        ctx.fill();
+        
+        // render the mouth
+        ctx.beginPath();
+        if (faceHappy) {
+            // Happy: smile - draw a smiling arc
+            ctx.arc(150, 170, 40, 0, Math.PI, false);
+        } else {
+            // Unhappy: frown - draw an upside down arc
+            ctx.arc(150, 190, 40, Math.PI, 0, false);
+        }
+        ctx.stroke();
     }
 
     canvas.on('click', function (e) {
         // use e.offsetX and e.offsetY to get the mouse position
-        // check if the click is inside the circle
-        // if so, toggle the face
+        const x = e.offsetX;
+        const y = e.offsetY;
+        
+        // check if the click is inside the circle (face centered at 150,150 with radius 100)
+        const dx = x - 150;
+        const dy = y - 150;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance <= 100) {
+            // toggle the face state
+            faceHappy = !faceHappy;
+            Emotion();
+        }
     });
 
     Emotion();
