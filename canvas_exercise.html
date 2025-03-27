@@ -25,6 +25,11 @@
         // clear canvas
         ctx.clearRect(0, 0, 300, 300);
         
+        //add a black boder to the canvas
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(0, 0, 300, 300);
+        
         // render the face (big circle)
         ctx.beginPath();
         ctx.arc(150, 150, 100, 0, Math.PI * 2);
